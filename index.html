@@ -1,0 +1,32 @@
+<!DOCTYPE = html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <script src="angleApproachApp_4.js"></script>
+
+    </head>
+    <body onload="startApp()">
+        <div id = "angleApproachApp">
+            
+            <canvas id = "appCanvas"></canvas>
+            <div id= "appMenu">
+                    <input id="input_field" style = "display: none" type ="file" accept="image/*" onchange="loadImage()">
+                    <p id="angle">  </p>
+                    <div id="zoom-menu">                        
+                        <button onclick="openFileDialog()">Select Image</button>
+                        <button onclick="zoomIn('front')" onmouseover="btnHoverOn('front')" 
+                                onmouseout="btnHoverOff('front')">Front Wheel</button>
+                        <button onclick="zoomIn('back')" onmouseover="btnHoverOn('back')" 
+                                onmouseout="btnHoverOff('back')">Back Wheel</button>
+                        <button onclick="zoomIn('contact')" onmouseover="btnHoverOn('contact')" 
+                                onmouseout="btnHoverOff('contact')">Contact Point</button>
+                        <button onclick="zoomOut()" >Zoom Out</button>
+                    </div>
+                  
+            </div>
+        </div>
+
+    </body>
+
+</html>
