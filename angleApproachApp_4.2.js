@@ -48,9 +48,10 @@ function loadImage() {
 };
 
 function resize() {
+    var vp = getViewport();
     var ratio = 5/3; //width / height
-    var newWidth = window.innerWidth;
-    var newHeight = window.innerHeight * .8;
+    var newWidth = Math.max(window.innerWidth, document.documentElement.clientWidth);
+    var newHeight = Math.max(window.innerHeight, document.documentElement.clientHeight) * .8;
     var newRatio = newWidth / newHeight;
 
     if (newRatio > ratio) {
@@ -83,12 +84,29 @@ function updateAppArea() {
     if (appArea.img.src)
         appArea.drawImage(scale,pan);
 
+    if (scale === 1){
+        boundsChecking(back);
+        boundsChecking(front);
+        boundsChecking(contact);
+    }
+
     drawTriangle();
     
     back.draw(appArea.context);
     front.draw(appArea.context);
     contact.draw(appArea.context);
 };
+
+function boundsChecking(point) {
+    if (point.x < 0 )
+        point.x = 0 + point.r;
+    else if (point >= appArea.canvas.width)
+        point.x = appArea.canvas.height - point.r;
+    if (point.y < 0 )
+        point.y = 0 + point.r;
+    else if (point.y >= appArea.canvas.height)
+        point.y = appArea.canvas.height - point.r ;     
+}
 
 function AppArea() {
     this.img = new Image();
@@ -97,8 +115,8 @@ function AppArea() {
     this.start = function () {
         this.canvas = document.getElementById('appCanvas');
         this.img.cropped = false;
-        this.canvas.width = 1000;
-        this.canvas.height = 600;
+        this.canvas.width = 500;
+        this.canvas.height = 300;
         this.context = this.canvas.getContext("2d");
     
         this.canvas.addEventListener("mousedown", dragStart, false);
@@ -423,6 +441,10 @@ function resetZoom() {
     contact.scalePoint(1/scale);
 
     scale = 1;
+
+    boundsChecking(back);
+    boundsChecking(front);
+    boundsChecking(contact);
 }
 
 function zoomIn(target) {
