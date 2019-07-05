@@ -1,3 +1,8 @@
+/******************************************
+* Contains all code neccessary to run current
+* stable version of the angle of approach app
+**********************************************/
+
 //color pallet
 POINT_COLOR = "red";
 LINE_COLOR = "white";
