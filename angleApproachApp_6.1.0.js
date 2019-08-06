@@ -61,7 +61,7 @@ function loadImage() {
     //setUpDragPoints();
     var reader = new FileReader();
     reader.onload = function(event) {
-        if (trailerMode === false){
+        if (raceRampApp.trailerMode === false){
             raceRampApp.vehicle.img = new Image();
             raceRampApp.vehicle.img.onload = function() {
                 updateAppScreen();
