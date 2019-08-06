@@ -1,0 +1,15 @@
+#angleApproachApp {
+    background-color: gray;
+}
+#app-start-overlay {
+    background-color: red;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 500;
+}
+
+#appCanvas {
+    border:black 3px solid;
+}

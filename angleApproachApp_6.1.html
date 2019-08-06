@@ -1,0 +1,69 @@
+<!DOCTYPE = html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
+        <script src="appUtilities_6.1.0.js"></script>
+        <script src="angleApproachApp_6.1.0.js"></script>
+        <script src="appListeners_6.1.0.js"></script>
+
+    <link rel="stylesheet" href="angleApproachApp_6.1.css">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+
+    </head>
+
+    
+    <body onload="startApp()">
+        <div class="container">
+        <div id = "angleApproachApp" class="row" style="margin-top: 10%;  ">
+        <div id="appCanvas-container" class="nine columns" style=" margin-right: 0;"> 
+            <canvas id = "appCanvas"></canvas>
+        </div>   
+            <div id= "appMenu" class="three columns" >
+                
+                   <div >
+                    <button id="mode_btn" onclick="switchMode()">Trailer</button>
+                    <button id="img_btn" onclick="openFileDialog()">Select Vehicle Image</button>
+                    <input id = "img_input" style = "display: none" type ="file" accept="image/*" 
+                    onchange="loadImage()">
+                    Trailer Ramp Length: 
+                    <input id = "ramp_length" type = "number" style = "display: none" onchange = "calculateTrailerRampAngle()">
+                    <div id="zoom-menu">
+                        <p>Zoom In On: <p>                       
+                        <button id="zoom1" onclick="zoomIn(this)" onmouseover="btnHoverOn(this)" 
+                                onmouseout="btnHoverOff(this)">Front Wheel</button>
+                        <button id="zoom2" onclick="zoomIn(this)" onmouseover="btnHoverOn(this)" 
+                                onmouseout="btnHoverOff(this)">Back Wheel</button>
+                        <button id="zoom3" onclick="zoomIn(this)" onmouseover="btnHoverOn(this)" 
+                                onmouseout="btnHoverOff(this)">Fender Contact</button>
+                        <button onclick="zoomOut()">Zoom Out</button>
+                    </div>
+                    </div>
+                    <div >
+                        <p id="angle">  </p> 
+                    </div>
+                    
+            </div>   
+            <div id="app-start-overlay">
+                <div class="row" >
+                    <div style="width: 100%; margin: 0 auto;">
+                        <h3>Interactive Ramp Angle Calculator</h3>
+                    </div>    
+                </div>
+                <div class="row">
+                <div class="nine columns">
+                    <p>This is where the instruction window goes</p>
+                </div>
+                <div class="three columns">  
+                    <button class="button-primary" onclick="toggleOverlay()">START</button>
+                </div>
+                </div>
+        </div>
+        </div>
+    </body>
+
+</html>
+
